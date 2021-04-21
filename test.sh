@@ -1,5 +1,5 @@
-docker build -q -t cma .
-docker run --rm --name cma -d -p 8080:8080 cma
+docker build -q -t $1 .
+docker run --rm --name cma -d -p 8080:8080 $1
 
 RESULT=`curl -s --header "Content-Type: application/json" \
   --request POST \
