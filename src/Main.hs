@@ -1,5 +1,6 @@
 module Main where
 
+import Prelude hiding (id)
 import Data.Bits (complement)
 import Cpu (Cpu (..), CpuState (..))
 import Web.Scotty ( get, json, jsonData, post, scotty, text )
@@ -17,7 +18,7 @@ main = do
         json updatedCpu
 
 cma :: Cpu -> Cpu
-cma cpu = Cpu (opcode cpu) (CpuState newA (b s) (c s) (d s) (e s) (h s) (l s) (stackPointer s) (programCounter s) newCycles (flags s))
+cma cpu = Cpu (opcode cpu) (id cpu) (CpuState newA (b s) (c s) (d s) (e s) (h s) (l s) (stackPointer s) (programCounter s) newCycles (flags s))
   where
     s = state cpu
     newCycles = cycles s + 4

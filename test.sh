@@ -4,9 +4,9 @@ docker run --rm --name cma -d -p 8080:8080 $1
 sleep 5
 RESULT=`curl -s --header "Content-Type: application/json" \
   --request POST \
-  --data '{"opcode":0,"state":{"a":181,"b":0,"c":0,"d":0,"e":0,"h":0,"l":0,"flags":{"sign":false,"zero":false,"auxCarry":false,"parity":false,"carry":false},"programCounter":0,"stackPointer":0,"cycles":0}}' \
+  --data '{"id":"abcd", "opcode":0,"state":{"a":181,"b":0,"c":0,"d":0,"e":0,"h":0,"l":0,"flags":{"sign":false,"zero":false,"auxCarry":false,"parity":false,"carry":false},"programCounter":0,"stackPointer":0,"cycles":0}}' \
   http://localhost:8080/api/v1/execute`
-EXPECTED='{"opcode":0,"state":{"a":74,"b":0,"c":0,"d":0,"e":0,"h":0,"l":0,"flags":{"sign":false,"zero":false,"auxCarry":false,"parity":false,"carry":false},"programCounter":0,"stackPointer":0,"cycles":4}}'
+EXPECTED='{"id":"abcd", "opcode":0,"state":{"a":74,"b":0,"c":0,"d":0,"e":0,"h":0,"l":0,"flags":{"sign":false,"zero":false,"auxCarry":false,"parity":false,"carry":false},"programCounter":0,"stackPointer":0,"cycles":4}}'
 
 docker kill cma
 
