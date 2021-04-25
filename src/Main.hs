@@ -18,7 +18,7 @@ main = do
         json updatedCpu
 
 cma :: Cpu -> Cpu
-cma cpu = Cpu (opcode cpu) (id cpu) (CpuState newA (b s) (c s) (d s) (e s) (h s) (l s) (stackPointer s) (programCounter s) newCycles (flags s))
+cma cpu = Cpu (opcode cpu) (id cpu) (CpuState newA (b s) (c s) (d s) (e s) (h s) (l s) (stackPointer s) (programCounter s) newCycles (flags s) (interruptsEnabled s))
   where
     s = state cpu
     newCycles = cycles s + 4
